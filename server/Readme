@@ -1,0 +1,4 @@
+Entities:
+Department: id, name
+Employee: id, full_name, email, department(Ref)
+Attendance: id, employee_id(ref), date, status (Enum: Present/Absent)

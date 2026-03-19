@@ -1,14 +1,13 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-class UserBase(BaseModel):
+class DepartmentBase(BaseModel):
     name: str
-    email: str
 
-class UserCreate(UserBase):
+class DepartmentCreate(DepartmentBase):
     pass
 
-class UserResponse(UserBase):
+class DepartmentResponse(DepartmentBase):
     id: int
     created_at: datetime
 
