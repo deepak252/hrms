@@ -1,0 +1,6 @@
+venv
+.env
+__pycache__
+creds
+api_test.rest
+Doc.txt
