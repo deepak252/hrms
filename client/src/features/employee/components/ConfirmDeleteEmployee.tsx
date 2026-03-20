@@ -3,7 +3,6 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { cancelDeleteEmployee, deleteEmployee } from '../employeeSlice';
 
 type ConfirmDeleteModalProps = {
-  employeeName?: string;
   onConfirm: () => void;
   onCancel: () => void;
   loading?: boolean;
@@ -20,7 +19,7 @@ const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
       onClose={onCancel}
       closeOnOutsideClick
       closeOnEsc
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-20"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-30"
     >
       <div className="bg-white rounded-2xl p-6 max-w-md shadow-lg">
         <h2 className="text-xl font-semibold mb-3 text-gray-800">

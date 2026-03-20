@@ -1,20 +1,20 @@
-import Loader from '@/components/Loader';
-import { useAppSelector } from '@/hooks';
+// import Loader from '@/components/Loader';
+// import { useAppSelector } from '@/hooks';
 
-const RootLoader = () => {
-  const isLoadingDelete = useAppSelector(
-    (state) => state.employee.employeeDelete.isLoading
-  );
-  const isLoadingEmployeeForm = useAppSelector(
-    (state) => state.employee.employeeForm.isLoading
-  );
-  //   const isLoadingProjectForm = useAppSelector(
-  //     (state) => state.projects.projectForm.isLoading
-  //   );
+// const RootLoader = () => {
+//   const isLoadingDelete = useAppSelector(
+//     (state) => state.employee.employeeDelete.isLoading
+//   );
+//   const isLoadingEmployeeForm = useAppSelector(
+//     (state) => state.employee.employeeForm.isLoading
+//   );
+//   //   const isLoadingProjectForm = useAppSelector(
+//   //     (state) => state.projects.projectForm.isLoading
+//   //   );
 
-  const isLoading = !isLoadingDelete || isLoadingEmployeeForm;
+//   const isLoading = !isLoadingDelete || isLoadingEmployeeForm;
 
-  return <div>{/* <Loader isLoading={isLoading} /> */}</div>;
-};
+//   return <div>{/* <Loader isLoading={isLoading} /> */}</div>;
+// };
 
-export default RootLoader;
+// export default RootLoader;

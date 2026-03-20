@@ -35,7 +35,7 @@ const Toast = ({
     'flex items-center fixed top-12 left-1/2 -translate-x-1/2 px-4 py-3 rounded-[30px] min-w-80 max-w-5xl min-h-14 z-50',
     {
       'bg-red-600 ': type === 'failure',
-      'bg-green': type === 'success',
+      'bg-green-600': type === 'success',
       'bg-gray-600': type === 'message'
     }
   );

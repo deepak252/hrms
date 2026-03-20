@@ -6,8 +6,6 @@ const RootToast = () => {
   const dispatch = useAppDispatch();
   const employeeToastData = useAppSelector((state) => state.employee.toastData);
 
-  console.log(employeeToastData);
-
   return (
     <div>
       {employeeToastData?.message && (

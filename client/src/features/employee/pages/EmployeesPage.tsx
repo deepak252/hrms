@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import EmployeeTableWrapper from '../components/EmployeeTable';
 import { useAppDispatch } from '@/hooks';
-import { getEmployees } from '../employeeSlice';
+import { getEmployees, openEmployeeForm } from '../employeeSlice';
 import ConfirmDeleteEmployeeWrapper from '../components/ConfirmDeleteEmployee';
 
 const EmployeesPage: React.FC = () => {
@@ -12,8 +12,24 @@ const EmployeesPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleAddEmployee = () => {
+    dispatch(openEmployeeForm());
+  };
+
   return (
     <div className="p-6 max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto pb-4 flex items-center justify-between">
+        <h1 className="text-2xl font-semibold tracking-wide">Employees</h1>
+
+        <div className="flex items-center gap-6">
+          <button
+            className="bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-700 transition cursor-pointer"
+            onClick={handleAddEmployee}
+          >
+            Add Employee
+          </button>
+        </div>
+      </div>
       {/* <h1 className="text-2xl font-bold mb-6">{initialData.message}</h1> */}
       <EmployeeTableWrapper />
       <ConfirmDeleteEmployeeWrapper />

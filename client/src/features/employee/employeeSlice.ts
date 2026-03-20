@@ -40,7 +40,6 @@ const initialState: EmployeeState = {
   employeeForm: {
     isOpen: false,
     isLoading: false
-    // data: formDataInitialState,
   },
   employeeDelete: {}
 };
@@ -54,13 +53,8 @@ const employeeSlice = createSlice({
       state.data.isLoading = true;
     },
     getEmployeesSuccess: (state, action: PayloadAction<Employee[]>) => {
-      // const { employees = [] } = action.payload || {};
       state.data.isLoading = false;
       state.data.list = action.payload;
-      // state.data.page = metadata.currentPage;
-      // state.data.limit = metadata.itemsPerPage;
-      // state.data.totalPages = metadata.totalPages;
-      // state.data.totalResults = metadata.totalItems;
     },
     getEmployeesFailure: (state, action) => {
       state.data.isLoading = false;
@@ -81,7 +75,7 @@ const employeeSlice = createSlice({
       };
       state.toastData = {
         type: 'success',
-        message: 'Your employee is being processed. It will appear soon.'
+        message: 'Employee added successfully'
       };
     },
     createEmployeeFailure: (state, action) => {
@@ -113,7 +107,6 @@ const employeeSlice = createSlice({
     },
     getEmployeeDetailsSuccess: (state, action: PayloadAction<Employee>) => {
       state.employeeDetails.isLoading = false;
-      console.log(action.payload);
       state.employeeDetails.profile = action.payload;
     },
     getEmployeeDetailsFailure: (state) => {

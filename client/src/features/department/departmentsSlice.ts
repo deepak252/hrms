@@ -25,7 +25,7 @@ const departmentSlice = createSlice({
   name: 'department',
   initialState,
   reducers: {
-    getDepartments: (state, _: PayloadAction<undefined>) => {
+    getDepartments: (state) => {
       state.data.isLoading = true;
     },
     getDepartmentsSuccess: (state, action: PayloadAction<Department[]>) => {

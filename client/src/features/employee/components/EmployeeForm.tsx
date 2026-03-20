@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useFormik } from 'formik';
 import ModalWrapper from '@/components/ModalWrapper';
 import TextInput from '@/components/TextInput';
@@ -6,12 +7,6 @@ import { useAppDispatch, useAppSelector } from '@/hooks';
 import { createEmployee, resetEmployeeForm } from '../employeeSlice';
 import { type EmployeeFormValues } from '@/shared.types';
 import { validateEmployeeForm } from '../employeeUtil';
-
-const departments = [
-  { label: 'Engineering', value: 1 },
-  { label: 'HR', value: 2 },
-  { label: 'Sales', value: 3 }
-];
 
 type Props = {
   loading: boolean;
@@ -24,6 +19,14 @@ const EmployeeForm: React.FC<Props> = ({
   onClose,
   onSubmit
 }) => {
+  const departments = useAppSelector((state) => state.department.data);
+  const departmentList = useMemo(() => {
+    return departments.list.map((d) => ({
+      label: d.name,
+      value: d.id
+    }));
+  }, [departments]);
+
   const formik = useFormik<EmployeeFormValues>({
     initialValues: {
       fullName: '',
@@ -44,11 +47,10 @@ const EmployeeForm: React.FC<Props> = ({
       onClose={onClose}
       closeOnEsc
       closeOnOutsideClick
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/50 flex items-center justify-center z-30"
     >
-      <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-lg">
+      <div className="bg-white rounded-2xl p-6 w-full max-w-lg md:w-lg shadow-lg">
         <h2 className="text-xl font-semibold mb-4">Add Employee</h2>
-
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <TextInput
             label="Full Name"
@@ -77,7 +79,7 @@ const EmployeeForm: React.FC<Props> = ({
             value={formik.values.departmentId}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
-            options={departments}
+            options={departmentList}
             error={formik.errors.departmentId}
             touched={formik.touched.departmentId}
           />
@@ -86,14 +88,14 @@ const EmployeeForm: React.FC<Props> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-lg border"
+              className="cursor-pointer px-4 py-2 rounded-lg border"
             >
               Cancel
             </button>
 
             <button
               type="submit"
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+              className="cursor-pointer bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
             >
               {loading ? 'Adding...' : 'Add'}
             </button>

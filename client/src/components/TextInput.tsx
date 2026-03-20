@@ -7,6 +7,7 @@ type Props = {
   error?: string;
   touched?: boolean;
   type?: string;
+  readOnly?: boolean;
 };
 
 const TextInput: React.FC<Props> = ({
@@ -17,6 +18,7 @@ const TextInput: React.FC<Props> = ({
   onBlur,
   error,
   touched,
+  readOnly,
   type = 'text'
 }) => {
   return (
@@ -30,6 +32,7 @@ const TextInput: React.FC<Props> = ({
         onChange={onChange}
         onBlur={onBlur}
         className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        readOnly={readOnly}
       />
 
       {touched && error && <p className="text-red-500 text-sm mt-1">{error}</p>}

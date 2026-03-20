@@ -1,3 +1,5 @@
+export type AttendanceStatus = 'Present' | 'Absent';
+
 export type ToastData = {
   type?: 'success' | 'failure' | 'message' | null;
   message?: string | null;
@@ -36,6 +38,31 @@ export type CreateEmployeePayload = {
   full_name: string;
   email: string;
   department_id: number;
+};
+
+export type MarkAttendancePayload = {
+  employee_id: number;
+  status: AttendanceStatus;
+  date: string;
+};
+
+export type Attendance = {
+  id: number;
+  employeeId: number;
+  status: AttendanceStatus;
+  date: string;
+};
+
+export type AttendanceFormValues = {
+  employeeId: number;
+  status: AttendanceStatus;
+  date: string;
+};
+
+export type AttendanceFormError = {
+  employeeId?: string;
+  status?: string;
+  date?: string;
 };
 
 export type Department = {
