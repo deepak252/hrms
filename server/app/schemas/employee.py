@@ -11,6 +11,7 @@ class EmployeeCreate(EmployeeBase):
 
 class EmployeeResponse(EmployeeBase):
     id: int
+    department: str
     created_at: datetime
 
     class Config:

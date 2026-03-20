@@ -11,9 +11,8 @@ def mark_attendance(payload: AttendanceCreate, service: AttendanceService = Depe
     attendance = service.mark_attendance(payload)
     return ApiResponse(message="Attendance marked", data=AttendanceResponse.model_validate(attendance))
 
-
 @router.get("/employee/{employee_id}", response_model=ApiResponse)
-def mark_attendance(employee_id: int, service: AttendanceService = Depends(get_attendance_service)):
+def get_employee_attendance(employee_id: int, service: AttendanceService = Depends(get_attendance_service)):
     history = service.get_employee_attendance(employee_id)
     attendance_list = [AttendanceResponse.model_validate(u) for u in history]
 

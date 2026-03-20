@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models.employee import Employee
+from app.models.department import Department
 
 class EmployeeRepository:
     db: Session
@@ -14,7 +15,12 @@ class EmployeeRepository:
         return employee
     
     def get_all(self):
-        return self.db.query(Employee).all()
+        # return self.db.query(Employee).all()
+        return (
+            self.db.query(Employee)
+            .join(Employee.department)
+            .all()
+        )
     
     def get_by_email(self, email: str):
         return self.db.query(Employee).filter(Employee.email == email).first()
