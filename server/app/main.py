@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.core.database import Base, engine
 from app.routes import employees, attendance, departments
 from app.core.exceptions import (
@@ -12,6 +13,13 @@ from sqlalchemy.exc import SQLAlchemyError
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="HRMS")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get('/')
 def home():
