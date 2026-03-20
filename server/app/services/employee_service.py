@@ -1,3 +1,4 @@
+import re
 from app.repositories.employee_repository import EmployeeRepository
 from app.schemas.employee import EmployeeCreate
 from app.models.employee import Employee
@@ -10,6 +11,9 @@ class EmployeeService:
         self.repo = repo
 
     def create_employee(self, payload: EmployeeCreate):
+        if not re.fullmatch(r"\S+@\S+\.\S+", payload.email):
+            raise AppException("Invalid email format", 400)
+    
         existing = self.repo.get_by_email(payload.email)
 
         if existing:
