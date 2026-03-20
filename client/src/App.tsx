@@ -1,5 +1,11 @@
+import AppRoutes from './routes/AppRoutes';
+
 function App() {
-  return <div>HRMS Application</div>;
+  return (
+    <>
+      <AppRoutes />
+    </>
+  );
 }
 
 export default App;

@@ -1,1 +1,25 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+@layer utilities {
+  .disable-select {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }
+
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .overflow-ellipsis {
+    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+
+  .gradient-bottom-shade {
+    @apply bg-gradient-to-tr from-transparent to-black/30;
+  }
+}
